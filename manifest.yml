@@ -1,0 +1,7 @@
+
+applications:
+  - name: nextdocker
+    docker:
+      image: govidev1012000/next1:latest
+      username: govidev1012000
+      password: Password@33355
