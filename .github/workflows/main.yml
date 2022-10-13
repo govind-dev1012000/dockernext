@@ -46,9 +46,7 @@ jobs:
         run: docker build . --file Dockerfile --tag govidev1012000/next1:latest
       - name: Push the Docker image
         run: docker login -u govidev1012000 -p ${{ secrets.DOCKER_TOKEN }} && docker push govidev1012000/next1:latest
-      - name: Print a greeting
-        run: echo 'Hello World'
-      - uses: actions/checkout@v3
+      - name: Docker success moving to cf deploy
       # - uses: actions/setup-node@v3
       #   with:
       #     node-version: 16  
