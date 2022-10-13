@@ -1,7 +1,7 @@
 on: push
 
 jobs:
-  job:
+  docker:
     runs-on: ubuntu-latest
     steps:
       - name: Print a greeting
@@ -11,9 +11,12 @@ jobs:
         run: docker build . --file Dockerfile --tag govidev1012000/next1:latest
       - name: Push the Docker image
         run: docker login -u govidev1012000 -p ${{ secrets.DOCKER_TOKEN }} && docker push govidev1012000/next1:latest
-      # - name: Print a greeting
-      #   run: echo 'Hello World'
-      # - uses: actions/checkout@v3
+  cf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a greeting
+        run: echo 'Hello World'
+      - uses: actions/checkout@v3
       # - uses: actions/setup-node@v3
       #   with:
       #     node-version: 16  
@@ -27,5 +30,5 @@ jobs:
           cf_password: Password@33355
           cf_org: 94fe3e77trial
           cf_space: dev
-          command: CF_DOCKER_PASSWORD=Password@33355
+          # command: CF_DOCKER_PASSWORD=Password@33355
           command: push
