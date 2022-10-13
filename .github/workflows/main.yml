@@ -7,9 +7,13 @@ jobs:
       - name: Print a greeting
         run: echo 'Hello World'
       - uses: actions/checkout@v3
-      - name: script
-        run: |
-          docker build -t app .
-          echo dckr_pat_F8_3ZBW8NYoHBn5-mZ9xjsg-7sE | docker login -u govidev1012000 --password -stdin
-          docker tag app govidev1012000/next1
-          docker push govidev1012000/next1
+      # - name: script
+      #   run: |
+      #     docker build -t app .
+      #     echo dckr_pat_F8_3ZBW8NYoHBn5-mZ9xjsg-7sE | docker login -u govidev1012000 --password -stdin
+      #     docker tag app govidev1012000/next1
+      #     docker push govidev1012000/next1
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag govidev1012000/next1:latest
+      - name: Push the Docker image
+        run: docker login -u govidev1012000 -p ${{ secrets.DOCKER_TOKEN }} && docker push govidev1012000/next1:latest
