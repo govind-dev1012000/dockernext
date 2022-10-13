@@ -23,6 +23,8 @@ jobs:
       # - run: npm i
       # - run: npm run build
       - name: deploy
+        env:
+          CF_DOCKER_PASSWORD: Password@33355
         uses: citizen-of-planet-earth/cf-cli-action@v2
         with:
           cf_api: https://api.cf.us10-001.hana.ondemand.com
@@ -30,5 +32,4 @@ jobs:
           cf_password: Password@33355
           cf_org: 94fe3e77trial
           cf_space: dev
-          # command: CF_DOCKER_PASSWORD=Password@33355
           command: push
