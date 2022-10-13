@@ -1,0 +1,15 @@
+on: push
+
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a greeting
+        run: echo 'Hello World'
+      - uses: actions/checkout@v3
+      - name: script
+        run: |
+          docker build -t app .
+          echo dckr_pat_F8_3ZBW8NYoHBn5-mZ9xjsg-7sE | docker login -u govidev1012000 --password -stdin
+          docker tag app govidev1012000/next1
+          docker push govidev1012000/next1
